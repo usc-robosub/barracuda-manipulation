@@ -5,11 +5,12 @@ RUN apt-get update && apt-get install -y \
     git \
     openssh-client \
     vim \
-    i2c-tools \
-    python3-pandas \
-    python3-numpy \
+    #i2c-tools \
+    #python3-pandas \
+    #python3-numpy \
     python3-rospy \
     python3-pip \
+    python3-ri.gpio \ 
     && pip3 install --no-cache-dir smbus2 \
     && apt-get purge -y python3-pip \
     && apt-get autoremove -y \
