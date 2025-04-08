@@ -16,7 +16,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get purge -y python3-pip \ 
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* \
-    && chmod +x /opt/barracuda-manipulation/entrypoint.sh
+    && chmod +x /opt/barracuda-manipulation/entrypoint.sh \
+    && chmod +x /opt/barracuda-manipulation/catkin_ws/src/barracuda_manipulation/scripts/*.py
+
     # && mkdir /root/.ssh && chmod 700 /root/.ssh \
     #&& ssh-keyscan github.com >> /root/.ssh/known_hosts \
     # && git config --global url."git@github.com:".insteadOf "https://github.com/" \
