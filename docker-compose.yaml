@@ -18,6 +18,7 @@ services:
     devices:
       - /dev/gpiomem
       - /dev/mem
-      - /dev/ttyAMA0
+      # /dev/ttyAMA0
     environment:
       - GPIOZERO_PIN_FACTORY=rpigpio
+    priviledged: true
