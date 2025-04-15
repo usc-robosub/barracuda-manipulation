@@ -67,10 +67,10 @@ def fourth_control(msg):
 # can I chose the topic names, or am I making them up
 def manipulator_node():
     rospy.init_node('manipulator', anonymous=True) # Check to see if anonymous is needed
-    rospy.Subscriber('/manipulator/grabber/state', grabber_control)
-    rospy.Subscriber('/manipulator/dropper/state', dropper_control)
-    rospy.Subscriber('/manipulator/torpedo/state', torpedo_control)
-    rospy.Subscriber('/manipulator/fourth/state', fourth_control)
+    rospy.Subscriber('/manipulator/grabber/state', Bool, grabber_control)
+    rospy.Subscriber('/manipulator/dropper/state', Bool, dropper_control)
+    rospy.Subscriber('/manipulator/torpedo/state', Bool, torpedo_control)
+    rospy.Subscriber('/manipulator/fourth/state', Bool, fourth_control)
 
     rospy.spin()
 
