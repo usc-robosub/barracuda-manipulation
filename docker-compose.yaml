@@ -21,4 +21,4 @@ services:
       # /dev/ttyAMA0
     environment:
       - GPIOZERO_PIN_FACTORY=rpigpio
-    priviledged: true
+    privileged: true
