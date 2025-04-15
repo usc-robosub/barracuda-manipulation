@@ -19,12 +19,6 @@ DROPPER_PIN = 27
 TORPEDO_PIN = 22
 FOURTH_PIN = 23
 
-GPIO.setmode(GPIO.BCM)  # check if BCM mode
-GPIO.setup(GRABBER_PIN, GPIO.OUT)
-GPIO.setup(DROPPER_PIN, GPIO.OUT)
-GPIO.setup(TORPEDO_PIN, GPIO.OUT)
-GPIO.setup(FOURTH_PIN, GPIO.OUT)
-
 # Subscriber callback functions
 # Note: check if active high or active low
 # Also check to see if we want the callback functions to set the pins 
@@ -66,12 +60,20 @@ def fourth_control(msg):
 
 # can I chose the topic names, or am I making them up
 def manipulator_node():
+
+    GPIO.setmode(GPIO.BCM)  # check if BCM mode
+    GPIO.setup(GRABBER_PIN, GPIO.OUT)
+    GPIO.setup(DROPPER_PIN, GPIO.OUT)
+    GPIO.setup(TORPEDO_PIN, GPIO.OUT)
+    GPIO.setup(FOURTH_PIN, GPIO.OUT)
+
     rospy.init_node('manipulator', anonymous=True) # Check to see if anonymous is needed
     rospy.Subscriber('/manipulator/grabber/state', Bool, grabber_control)
     rospy.Subscriber('/manipulator/dropper/state', Bool, dropper_control)
     rospy.Subscriber('/manipulator/torpedo/state', Bool, torpedo_control)
     rospy.Subscriber('/manipulator/fourth/state', Bool, fourth_control)
 
+    rospy.on_shutdown(GPIO.cleanup)    
     rospy.spin()
 
 if __name__ == '__main__':
