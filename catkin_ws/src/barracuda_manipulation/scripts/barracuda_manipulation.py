@@ -4,6 +4,7 @@ from std_reqs.req import Bool
 # import board
 import RPi.GPIO as GPIO
 import time
+from barracuda_manipulation.srv import SetPin
 
 '''
 Solenoids:
