@@ -1,15 +1,24 @@
 services:
-  barracuda-thruster-output-controller:
+  barracuda-manipulation:
     build:
       context: .
       dockerfile: Dockerfile
     user: root
-    image: barracuda-manipulator
-    container_name: barracuda-manipulator
+    image: barracuda-manipulation
+    container_name: barracuda-manipulation
     tty: true
     network_mode: host
     restart: "always"
     volumes:
       # - $HOME/.gitconfig:/root/.gitconfig:ro
       - $HOME/.ssh:/root/.ssh
-    
+      - /proc:/proc
+      - /boot:/boot
+      - /dev:/dev
+    devices:
+      - /dev/gpiomem
+      - /dev/mem
+      # /dev/ttyAMA0
+    environment:
+      - GPIOZERO_PIN_FACTORY=rpigpio
+    privileged: true

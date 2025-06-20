@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="barracuda_manipulation" name="test_publisher" type="test_publisher.py"/>
+    <node pkg="barracuda_manipulation" name="subscriber" type="barracuda_manipulation.py"/>
+</launch>
