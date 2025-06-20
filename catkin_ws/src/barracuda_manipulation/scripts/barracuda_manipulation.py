@@ -56,7 +56,7 @@ def fourth_control_handler(req):
         rospy.loginfo("setting fourth high")
     else: 
         GPIO.output(FOURTH_PIN, GPIO.LOW)
-        rospy.loginfo("setting foruth low")
+        rospy.loginfo("setting fourth low")
 
 
 # can I chose the topic names, or am I making them up
